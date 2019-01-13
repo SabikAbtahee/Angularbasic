@@ -1,0 +1,101 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 350px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top     : 0;
+  z-index : 1;
+  
+}
+
+
+.list-item {
+  display: flex;
+  /* or inline-flex */
+  // flex-wrap: row wrap;
+  justify-content: space-around;
+}
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+
+.img-wrap {
+  width        : 100%;
+  height       : auto;
+  position     : relative;
+  display      : inline-block;
+  overflow     : hidden;
+  margin       : 0;
+  border-radius: 80%;
+}
+
+.flex-container {
+  display        : flex;
+  flex-direction : column;
+  // flex-wrap      : wrap;
+  justify-content: center;
+  align-items    : center;
+  margin         : 10%;
+}
+
+.flex-item {
+  flex-grow: 1;
+  padding  : 10px;
+  margin   : 10px;
+}
+
+
+.toggleButton{
+  margin-right: 3%;
+}
+
+
+
+
+// @import '~@angular/material/theming';
+
+// @include mat-core();
+
+// $candy-app-primary: mat-palette($mat-indigo);
+// $candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+
+// $custom-theme: mat-light-theme($candy-app-primary,$candy-app-accent );
+// @include angular-material-theme($custom-theme);
+// @import '~@angular/material/theming';
+
+// @include mat-core();
+
+// $candy-app-primary: mat-palette($mat-indigo);
+// $candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+// $candy-app-warn:    mat-palette($mat-deep-orange);
+// $candy-app-theme:   mat-light-theme($candy-app-primary,$candy-app-accent,$candy-app-warn);
+
+// // Default theme styles.
+// @include angular-material-theme($candy-app-theme);
+
+// $dark-primary: mat-palette($mat-blue-grey);
+// $dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+// $dark-warn:    mat-palette($mat-deep-orange);
+// $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// .alternative {
+//   @include angular-material-theme($dark-theme);
+// //   @include angular-material-theme($candy-app-theme);
+// }
+// .alternative2{
+//     @include angular-material-theme($candy-app-theme);
+// }

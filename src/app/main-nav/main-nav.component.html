@@ -1,0 +1,83 @@
+<mat-sidenav-container [ngClass]="{
+  'theme1': themes[0],
+  'theme2': themes[1]
+}" class="sidenav-container"
+  fullscreen>
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+
+
+    <mat-toolbar><span class="example-fill-remaining-space"></span>Welcome<span class="example-fill-remaining-space"></span></mat-toolbar>
+    <mat-nav-list>
+      <div class="flex-container" fxLayoutGap="5%">
+        <div class="flex-item img-wrap">
+          <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" alt="" width="100%" height="20%">
+        </div>
+        <!-- width = "200" height = "200" -->
+
+
+        <div class="flex-item">
+          <h2>Sabik Abtahee</h2>
+        </div>
+        <div class="flex-item">
+          <h2>+88-65412398</h2>
+        </div>
+
+        <div class="flex-item"><h2><a routerLink="/imrulVai">ImrulVai</a></h2></div>
+        <div class="flex-item"><h2> <a routerLink="/user">User</a> </h2></div>
+        <div class="flex-item"><h2><a routerLink="/person">Person</a></h2></div>
+
+      </div>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+
+    <mat-toolbar>
+      <button mat-raised-button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        class="toggleButton">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+
+
+      <span>Theme Assignment</span>
+
+
+      <span class="example-fill-remaining-space"></span>
+      <a routerLink="/imrulVai">ImrulVai</a>
+
+
+
+      <span class="example-fill-remaining-space"></span>
+
+
+      <a routerLink="/user">User</a>
+
+      <span class="example-fill-remaining-space"></span>
+
+      <a routerLink="/person">Person</a>
+
+
+      <span class="example-fill-remaining-space"></span>
+      <button mat-button [matMenuTriggerFor]="menu" mat-raised-button mat-icon-button><i class="material-icons">
+        palette
+        </i></button>
+        
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="changeTheme('theme1')">Theme 1</button>
+        <button mat-menu-item (click)="changeTheme('theme2')">Theme 2</button>
+      </mat-menu>
+
+    </mat-toolbar>
+
+
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+
+  <!-- <router-outlet></router-outlet> -->
+</mat-sidenav-container>
