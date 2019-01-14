@@ -20,6 +20,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireAuthModule} from 'angularfire2/auth'
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { environment } from 'src/environments/environment';
 
 const appRoutes: Routes = [
   {
@@ -90,10 +94,16 @@ const appRoutes: Routes = [
     // FormControl,
     // Validators,
     // FormBuilder,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    AngularFireAuthModule,
+    
+
+
     
     
   ],
@@ -103,3 +113,7 @@ const appRoutes: Routes = [
 export class AppModule { 
 
 }
+
+
+// npm uninstall angularfire2
+// npm install angularfire2@5.0.0-rc.9
