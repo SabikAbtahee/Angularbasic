@@ -1,38 +1,93 @@
+<form #f="ngForm" (ngSubmit)="create(f.value)" >
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input #firstName="ngModel" ngModel [(ngModel)]="person.firstName" name="firstName" id="firstName" type="text" class="form-control" required minlength="3" maxlength="50"/>
+    <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+      FirstName is required within 3-50 characters.
+    </div>
 
-<form>
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input id="firstName" type="text" class="form-control">
+
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input #lastName="ngModel" ngModel [(ngModel)]="person.lastName"  name="lastName" id="lastName" type="text" class="form-control" minlength="3" maxlength="50" />
+    <div class="alert alert-danger" *ngIf="lastName.invalid">
+      LastName must be within 3-50 characters.
     </div>
-    <div class="form-group">
-      <label for="lastName">Last Name</label>
-      <input id="lastName" type="text" class="form-control">
+
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input #email="ngModel" ngModel [(ngModel)]="person.email"  name="email" id="email" type="email" class="form-control" required email>
+    <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+      Valid Email is required
     </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input id="email" type="email" class="form-control">
+
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label for="DOB">DOB</label>
+    <input #DOB="ngModel" ngModel [(ngModel)]="person.DOB"  name="DOB" id="DOB" type="date" class="form-control" required date>
+    <div class="alert alert-danger" *ngIf="DOB.touched && DOB.invalid">
+      DOB is required
     </div>
-    <div class="form-group">
-      <label for="DOB">DOB</label>
-      <input id="DOB" type="date" class="form-control">
+  </div>
+
+
+
+
+
+
+  <div class="form-group">
+    <label for="country">Country</label>
+    <select #country="ngModel" ngModel [(ngModel)]="person.country"  name="country" id="country" class="form-control" required>
+
+
+      <option *ngFor="let c of countries$ | async" [value]="c.key$">{{c.name}}</option>
+
+    </select>
+    <div class="alert alert-danger" *ngIf="country.touched && country.invalid">
+      Country is required
     </div>
-    <div class="form-group">
-      <label for="Country">Country</label>
-      <select id="Country" class="form-control">
-        <option value=""></option>
-      </select>
+  </div>
+
+
+
+
+
+  <div class="form-group">
+    <label for="Phone">Phone</label>
+    <input #phone="ngModel" ngModel [(ngModel)]="person.phone"  name="phone" id="Phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control">
+    <div class="alert alert-danger" *ngIf="phone.invalid">
+      Valid Number is required
     </div>
-    <div class="form-group">
-      <label for="Phone">Phone</label>
-      <input id="Phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control">
+  </div>
+
+
+  <div class="form-group">
+    <mat-radio-group #gender="ngModel"  ngModel [(ngModel)]="person.Gender"  name="Gender" required>
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female">Female</mat-radio-button>
+    </mat-radio-group>
+    <div class="alert alert-danger" *ngIf="!gender.touched">
+      Select a gender.
     </div>
-    
-  
-    <div class="form-group">
-      
-        <mat-radio-button name="Gender" value="male">Male</mat-radio-button>
-        <mat-radio-button  name="Gender" value="female">Female</mat-radio-button>
-      
-    </div>
-  
-  </form>
+  </div>
+
+
+
+
+
+  <button type="ngSubmit" [disabled]="!f.form.valid" class="btn btn-primary">Save</button>
+</form>

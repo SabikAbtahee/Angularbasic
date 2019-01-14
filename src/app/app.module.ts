@@ -22,8 +22,13 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth'
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireDatabaseModule, AngularFireDatabase} from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
+import { CountryService } from './services/country.service';
+import { PersonService } from './services/person.service';
+import {CustomFormsModule} from 'ng2-validation';
+import { ViewPersonComponent } from './view-person/view-person.component';
+
 
 const appRoutes: Routes = [
   {
@@ -38,6 +43,15 @@ const appRoutes: Routes = [
     path     : 'person/create',
     component: CreatePersonComponent
   },
+  {
+    path     : 'person/create/:id',
+    component: CreatePersonComponent
+  },
+  {
+    path     : 'person/view',
+    component: ViewPersonComponent
+  },
+ 
   {
     path      : '',
     redirectTo: '/user',
@@ -63,6 +77,8 @@ const appRoutes: Routes = [
     UserComponent,
     CreatePersonComponent,
     NotFoundComponent,
+    ViewPersonComponent,
+    
     
     
    
@@ -98,16 +114,21 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     AngularFireAuthModule,
+    CustomFormsModule
     
 
 
     
     
   ],
-  providers: [],
+  providers: [
+    CountryService,
+    PersonService,
+    AngularFireDatabase,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
