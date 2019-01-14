@@ -117,3 +117,5 @@ export class AppModule {
 
 // npm uninstall angularfire2
 // npm install angularfire2@5.0.0-rc.9
+// firebase use --add projectId
+// npm install --save firebase
