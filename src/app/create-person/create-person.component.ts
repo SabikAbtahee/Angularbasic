@@ -1,5 +1,5 @@
 import { CountryService } from './../services/country.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
@@ -16,6 +16,7 @@ export class CreatePersonComponent implements OnInit {
 
   countries$: Observable<any[]>;
   person = {};
+  @Input('id') id;
   constructor(private countryService: CountryService,
     private personService: PersonService,
     private Route:ActivatedRoute,
@@ -24,8 +25,9 @@ export class CreatePersonComponent implements OnInit {
     
     ) {
     this.countries$ = countryService.getCountries();
-    let id= this.Route.snapshot.paramMap.get('id');
-    if(id) this.personService.getPerson(id).take(1).subscribe(p=>this.person=p);
+    this.id= this.Route.snapshot.paramMap.get('id');
+    debugger;
+    if(this.id) this.personService.getPerson(this.id).take(1).subscribe(p=>this.person=p);
     
    }
    create(information){
