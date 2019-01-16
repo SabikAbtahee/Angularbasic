@@ -25,9 +25,9 @@ export class CreatePersonComponent implements OnInit {
     
     ) {
     this.countries$ = countryService.getCountries();
-    this.id= this.Route.snapshot.paramMap.get('id');
-    debugger;
-    if(this.id) this.personService.getPerson(this.id).take(1).subscribe(p=>this.person=p);
+    // this.id= this.Route.snapshot.paramMap.get('id');
+    
+    // if(this.id) this.personService.getPerson(this.id).take(1).subscribe(p=>this.person=p);
     
    }
    create(information){

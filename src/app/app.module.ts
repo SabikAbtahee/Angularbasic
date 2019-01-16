@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import  {FlexLayoutModule} from '@angular/flex-layout';
-import { MatToolbarModule, MatSidenavModule, MatCardModule, MatIconModule, MatButtonModule, MatListModule, MatTableModule, MatNativeDateModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatToolbarModule, MatSidenavModule, MatCardModule, MatIconModule, MatButtonModule, MatListModule, MatTableModule, MatNativeDateModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MainContentComponent } from './main-content/main-content.component';
@@ -19,7 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth'
 import {AngularFireDatabaseModule, AngularFireDatabase} from 'angularfire2/database';
@@ -28,44 +28,7 @@ import { CountryService } from './services/country.service';
 import { PersonService } from './services/person.service';
 import {CustomFormsModule} from 'ng2-validation';
 import { ViewPersonComponent } from './view-person/view-person.component';
-
-
-const appRoutes: Routes = [
-  {
-    path     : 'user',
-    component: UserComponent
-  },
-  {
-    path     : 'person',
-    component: PersonComponent
-  },
-  {
-    path     : 'person/create',
-    component: CreatePersonComponent
-  },
-  {
-    path     : 'person/create/:id',
-    component: CreatePersonComponent
-  },
-  {
-    path     : 'person/view',
-    component: ViewPersonComponent
-  },
- 
-  {
-    path      : '',
-    redirectTo: '/user',
-    pathMatch : 'full'
-  },
-  {
-    path      : 'imrulVai',
-    
-    component: MainContentComponent
-  },
-  
-  { path: '**', 
-  component: NotFoundComponent }
-];
+import { EditPersonComponent } from './edit-person/edit-person.component';
 
 
 @NgModule({
@@ -78,16 +41,11 @@ const appRoutes: Routes = [
     CreatePersonComponent,
     NotFoundComponent,
     ViewPersonComponent,
-    
-    
-    
-   
-  
+    EditPersonComponent,
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -106,17 +64,16 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatRadioModule,
     MatInputModule,
-    // FormGroup,
-    // FormControl,
-    // Validators,
-    // FormBuilder,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     AngularFireAuthModule,
-    CustomFormsModule
+    CustomFormsModule,
+    MatPaginatorModule,
+    MatSortModule,
+    AngularFirestoreModule
     
 
 

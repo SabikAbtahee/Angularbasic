@@ -6,6 +6,7 @@ import { CreatePersonComponent } from './create-person/create-person.component';
 import { ViewPersonComponent } from './view-person/view-person.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EditPersonComponent } from './edit-person/edit-person.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,8 @@ const routes: Routes = [
     component: CreatePersonComponent
   },
   {
-    path     : 'person/create/:id',
-    component: CreatePersonComponent
+    path     : 'person/edit/:id',
+    component: EditPersonComponent
   },
   {
     path     : 'person/view',
